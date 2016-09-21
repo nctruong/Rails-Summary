@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Id</th>
       <th>Thum</th>
       <th>Title</th>
       <th>Content</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
+        <td><%= article.id %></td>
         <td><%= article.thum %></td>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
@@ -31,3 +33,27 @@
 <br>
 
 <%= link_to 'New Article', new_article_path %>
+
+<h2>Render Sample - make by Truong Nguyen</h2>
+<br><!-- multiple values -->
+<%= render partial:'render', locals: { message: @message, name: @name} %>
+<br><!-- using as and object -->
+<%= render partial: 'as_object', object: @name, as: 'as_name' %>
+<br><!-- using only as -->
+<!-- By default, having its object in a local variable with the same name as the template -->
+<%= render partial: 'product' %>
+<br><!-- Render Collection -->
+Render Collection
+<% i = 0 %>
+<% @engineers.each do |engineer| %>
+  <% i += 1 %>
+  <%= render partial: 'engineer', locals: { engineer: engineer, i:i } %>
+<% end %>
+* Partial Layouts
+<%= render partial: 'article', layout: 'box', locals: { article: @article } %>
+prepend_view_path "app/views/#{request.subdomain}"
+append_view_path "app/views/direct"
+<h2>Overview of helpers provided by Action View</h2>
+<% image_tag("435725.jpg") %>
+<% image_url("435725.jpg") %>
+<% image_path("435725.jpg") %>

@@ -5,6 +5,11 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    @article  = Article.find(1)
+    @message  = "says hello"
+    @name     = "Truong"
+    @product  = "This is as render"
+    @engineers = {"name" => "Truong", "age" => "26", "country" => "Australia"}
   end
 
   # GET /articles/1
