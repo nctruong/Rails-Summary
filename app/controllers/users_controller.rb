@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    flash[:notice] = "You have successfully logged out."
     @users = User.all
   end
 
